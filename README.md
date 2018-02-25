@@ -13,6 +13,6 @@ http://gihyo.jp/book/2017/978-4-7741-9237-6
 curl -sSL https://get.haskellstack.org/ | sh
 # 確認
 stack
-# GHCコンパイラのインストール(かなり時間かかる)
+# GHCコンパイラのインストール(ダウンロードにかなり時間かかる)
 stack setup
 ```
