@@ -15,4 +15,6 @@ curl -sSL https://get.haskellstack.org/ | sh
 stack
 # GHCコンパイラのインストール(ダウンロードにかなり時間かかる)
 stack setup
+# ghcのreplを起動(最初はダウンロードがいるため遅い)
+stack ghci
 ```
