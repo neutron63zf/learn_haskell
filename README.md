@@ -18,3 +18,16 @@ stack setup
 # ghcのreplを起動(最初はダウンロードがいるため遅い)
 stack ghci
 ```
+
+# ビルドと実行、テスト
+
+```bash
+# ビルドと実行
+stack build
+stack exec myproject-exe
+# REPL読み込み
+# cabal以外とかなら:rでリロードできる
+stack ghci
+# テスト
+stack test
+```
