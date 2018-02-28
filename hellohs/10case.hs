@@ -75,5 +75,23 @@ constr = do
     x_
     y_
 
+guard = do
+    let
+        f x =
+            -- これ同じ行にガード書かないとエラーになる
+            case x of n | n `mod` 2 == 0    -> putStrLn "event"
+                        | otherwise         -> putStrLn "odd"
+        g x =
+            case x of (x1,  True)   | x1 `mod` 2 == 0 -> print (x1 `div` 2)
+                                    | (q, 1) <- x1 `divMod` 2 -> print q
+                      (x1,     _)   | x1 `mod` 2 == 0 -> print x1
+                                    | otherwise   -> print (x1 - 1)
+    f 10
+    f 9
+    g (10,True)
+    g (11,True)
+    g (8, False)
+    g (7, False)
+
 main = do
-    constr
+    guard
