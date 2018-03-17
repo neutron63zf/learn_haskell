@@ -69,4 +69,4 @@ tuple = do
         z = snd x
         w = (4,5,[6,7])
         v = let (_,_,n) = w in n
-    print [x,y,z,v]
+    print (y,z,v) -- 最初と比較を続けている
