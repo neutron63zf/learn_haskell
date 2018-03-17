@@ -105,9 +105,13 @@ def = do
             | otherwise         = putStrLn "odd"
         x = g 2
         (x2, y) = 22 `divMod` 5
+        z = let (x, y) = undefined in 1
+        w = let f (x, y) = 1 in f undefined
     print $ f (11, True)
     -- $ ないとエラーだよ
     x
+    print z -- 1
+    -- print w -- エラー。変数代入と関数評価パターンマッチングでは判定タイミングが違う
 
 main = do
     def
