@@ -63,3 +63,10 @@ firstlist = do
 
 tuple = do
     print "tuple learning"
+    let
+        x = (True, [1,2,3])
+        y = fst x
+        z = snd x
+        w = (4,5,[6,7])
+        v = let (_,_,n) = w in n
+    print [x,y,z,v]
