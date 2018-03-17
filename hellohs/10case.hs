@@ -84,6 +84,7 @@ guard = do
         g x =
             case x of (x1,  True)   | x1 `mod` 2 == 0 -> print (x1 `div` 2)
                                     | (q, 1) <- x1 `divMod` 2 -> print q
+                                    -- <- でガード内に更にパターンがいける
                       (x1,     _)   | x1 `mod` 2 == 0 -> print x1
                                     | otherwise   -> print (x1 - 1)
     f 10
@@ -93,5 +94,20 @@ guard = do
     g (8, False)
     g (7, False)
 
+def = do
+    let -- このletが無いとエラー（普通に実行として見られるっぽい）
+        f (x1, True) | (q, 0) <- x1 `divMod` 2  = q
+        {- z = f (10, False) -- これどうなるんだろう
+        putStrLn z -}
+        -- d = 2 --この行が入るとコンフリクト
+        f (x1, _)                               = x1
+        g n | n `mod` 2 == 0    = putStrLn "even"
+            | otherwise         = putStrLn "odd"
+        x = g 2
+        (x2, y) = 22 `divMod` 5
+    print $ f (11, True)
+    -- $ ないとエラーだよ
+    x
+
 main = do
-    guard
+    def

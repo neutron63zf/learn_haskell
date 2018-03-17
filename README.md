@@ -22,6 +22,8 @@ stack ghci
 # ビルドと実行、テスト
 
 ```bash
+# コンパイルしてそのまま実行
+stack runghc [PATH]
 # ビルドと実行
 stack build
 stack exec myproject-exe
