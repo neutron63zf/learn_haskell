@@ -1,6 +1,7 @@
 import Data.Char
+import Data.Maybe
 
-main = tuple
+main = maybetest
 
 firstlist = do
     print [1,2,3]
@@ -70,3 +71,23 @@ tuple = do
         w = (4,5,[6,7])
         v = let (_,_,n) = w in n
     print (y,z,v) -- 最初と比較を続けている
+
+maybetest = do
+    let
+        percentage k n  | n == 0    = Nothing
+                        | otherwise = Just (100.0 * k / n)
+    print $ percentage 10 5
+    print $ percentage 20 0
+    let
+        x = \a b -> case percentage a b of  Nothing -> "undefined"
+                                            Just x -> show x
+    print $ x 20 50
+    print $ x 20 0
+    let
+        p = percentage 30 50
+        q = percentage 30 0
+        mp = \a b -> maybe "maybetest" show $ percentage a b
+    print $ if isNothing p then "wow" else show $ fromJust p
+    print $ if isNothing q then "wow" else show $ fromJust q
+    print $ mp 20 60
+    print $ mp 2 0
