@@ -1,7 +1,8 @@
 import Data.Char
 import Data.Maybe
+import Data.Either
 
-main = maybetest
+main = eithertest
 
 firstlist = do
     print [1,2,3]
@@ -76,6 +77,8 @@ maybetest = do
     let
         percentage k n  | n == 0    = Nothing
                         | otherwise = Just (100.0 * k / n)
+    -- Maybe Double
+    -- Just Double / Nothing
     print $ percentage 10 5
     print $ percentage 20 0
     let
@@ -91,3 +94,19 @@ maybetest = do
     print $ if isNothing q then "wow" else show $ fromJust q
     print $ mp 20 60
     print $ mp 2 0
+
+eithertest = do
+    let
+        newp a b = case b of    0           -> Left "what"
+                                otherwise   -> Right $ 100.0 * a / b
+        -- Either String Double
+        -- Left String / Right Double
+    print $ newp 10 100
+    print $ newp 10 0
+    print $ case newp 10 0 of   Left err    -> err
+                                Right x     -> show x
+    print $ case newp 10 100 of Left err    -> err
+                                Right x     -> show x
+    print $ either id show $ newp 5 30
+    print $ either id show $ newp 10 0
+    -- print $ either show id $ newp 5 10
